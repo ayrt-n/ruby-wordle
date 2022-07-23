@@ -44,4 +44,14 @@ describe Wordle do
       expect(complex_wordle.check_guess(guess)).to eql(expected_results)
     end
   end
+
+  describe '#equal?' do
+    it 'returns true if string provided is equal to @word as a string' do
+      expect(wordle.equal?('TEST')).to be true
+    end
+
+    it 'returns false if string provided is not equal to @word as a string' do
+      expect(wordle.equal?('NOPE')).to be false
+    end
+  end
 end
