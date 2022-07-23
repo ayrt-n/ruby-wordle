@@ -14,4 +14,15 @@ describe GameController do
       expect(game.win?('NOPE')).to be false
     end
   end
+
+  describe 'lose?' do
+    it 'returns true round count reaches maximum number of rounds' do
+      game_over = GameController.new('TEST', 5, 5)
+      expect(game_over.lose?).to be true
+    end
+
+    it 'returns false when round count less than maximum number of rounds' do
+      expect(game.lose?).to be false
+    end
+  end
 end
