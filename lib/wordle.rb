@@ -22,7 +22,12 @@ class Wordle
     # Highlight the correct, partially correct, and incorrect letters
     feedback_array = highlight_correct_letters(guess_array, word_tmp)
     feedback_array = highlight_partially_correct_letters(feedback_array, word_tmp)
-    highlight_incorrect_letters(guess_array, feedback_array)
+    highlight_incorrect_letters(feedback_array)
+  end
+
+  # Check if provided string is equal to @word (case insensitive), returns bool
+  def equal?(other)
+    word.join('') == other.upcase
   end
 
   private
@@ -56,9 +61,9 @@ class Wordle
 
   # Check guess for incorrect letters and highlight grey
   # Takes array of guess characters and the hidden word and returns array
-  def highlight_incorrect_letters(guess_array, feedback_array)
-    guess_array.map.with_index do |char, i|
-      word.include?(char) ? feedback_array[i] : feedback_array[i].bg_grey.black
+  def highlight_incorrect_letters(feedback_array)
+    feedback_array.map do |char|
+      char.include?("\[e") ? char : char.bg_grey.black
     end
   end
 end
