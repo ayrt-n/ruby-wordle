@@ -16,4 +16,8 @@ class GameController
   def win?(guess)
     word.equal?(guess)
   end
+
+  def lose?
+    round >= number_of_rounds
+  end
 end
